@@ -2,10 +2,15 @@ apply plugin: 'groovy'
 
 repositories {
 	mavenCentral()
+	maven() {
+		url "https://mvnrepository.com/artifact/junit/junit"
+	}
 }
 
 dependencies {
 	compile 'org.codehaus.groovy:groovy-all:2.4.6'
+	testCompile 'junit:junit:3.8.1'
+
 }
 
 jar {
