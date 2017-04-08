@@ -1,5 +1,10 @@
-package io.chrismajor.bandname
+package io.chrismajor.bandname.wiki
 
+/**
+ * The 'old' way of generating band names
+ *
+ * Grab a random article from Wikipedia and return it's title
+ */
 class TitleGenerator {
 	// TODO: logging https://dzone.com/articles/log4j-groovy-way
 
