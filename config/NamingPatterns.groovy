@@ -1,5 +1,3 @@
-// package io.chrismajor.bandname.config
-
 /*
 Groovy script to act as configuration for band name patterns
 To be used in conjunction with groovy.util.ConfigSlurper

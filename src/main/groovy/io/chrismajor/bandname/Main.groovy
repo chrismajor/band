@@ -5,7 +5,11 @@ package io.chrismajor.bandname
 //def generator = new TitleGenerator()
 //println generator.getTitle()
 
-def config = new ConfigSlurper().parse(new URL("config/NamingPatterns.groovyo"))
-config.namingPatterns.each {
-    println it
+// TODO: use non-deprecated stuff here :/
+def config = new ConfigSlurper().parse(new File("config/NamingPatterns.groovy").toURL())
+
+config.namingPatterns.each { String pattern ->
+    pattern.toLowerCase().split("noun").each {
+        println "'$it'"
+    }
 }

@@ -14,13 +14,4 @@ class TestingTests extends GroovyTestCase{
 
         assertSame x, x
     }
-
-    void testMain() {
-        try {
-            new Main().main()
-        }
-        catch (Exception e) {
-            assert e == null
-        }
-    }
 }
