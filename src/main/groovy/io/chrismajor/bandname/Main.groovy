@@ -9,6 +9,7 @@ import io.chrismajor.bandname.tokens.TokenTypes
 
 // TODO: use non-deprecated stuff here :/
 def config = new ConfigSlurper().parse(new File("config/NamingPatterns.groovy").toURL())
+println ""
 
 // get a random pattern from the config file
 int patternCount = config.namingPatterns.size()
@@ -29,8 +30,8 @@ TokenTypes.getEnumConstants().each { token ->
     println "pattern contains token :: " + pattern.contains(propertyToken)
 
     if (pattern.contains(propertyToken)) {
-        // TODO: debug why this doesn't currently replace anything...
-        pattern.replaceAll(propertyToken, token.tokenFactory.getTokenValue().capitalize())
+        println "token replacement value :: " + token.tokenFactory.getTokenValue().capitalize()
+        pattern = pattern.replace(propertyToken, token.tokenFactory.getTokenValue().capitalize())
     }
 }
 
