@@ -27,10 +27,10 @@ TokenTypes.getEnumConstants().each { token ->
 
     println ""
     println "propertyToken          :: $propertyToken"
-    println "pattern contains token :: " + pattern.contains(propertyToken)
+    println "pattern contains token :: ${pattern.contains(propertyToken)}"
 
     if (pattern.contains(propertyToken)) {
-        println "token replacement value :: " + token.tokenFactory.getTokenValue().capitalize()
+        println "token replacement value :: ${token.tokenFactory.getTokenValue().capitalize()}"
         pattern = pattern.replace(propertyToken, token.tokenFactory.getTokenValue().capitalize())
     }
 }
