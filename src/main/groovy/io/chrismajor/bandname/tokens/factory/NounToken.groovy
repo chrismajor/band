@@ -1,5 +1,6 @@
 package io.chrismajor.bandname.tokens.factory
 
+import io.chrismajor.bandname.api.ApiWordnikDAOImpl
 import io.chrismajor.bandname.tokens.TokenFactory
 
 /**
@@ -11,6 +12,7 @@ class NounToken implements TokenFactory{
 
     @Override
     String getTokenValue() {
-        return "hat"
+        ApiWordnikDAOImpl api = new ApiWordnikDAOImpl()
+        return api.getRandomNoun()
     }
 }
