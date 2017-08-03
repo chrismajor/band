@@ -31,6 +31,7 @@ TokenTypes.getEnumConstants().each { token ->
 
     if (pattern.contains(propertyToken)) {
         println "token replacement value :: ${token.tokenFactory.getTokenValue().capitalize()}"
+        // TODO: replace the first instance of the token only
         pattern = pattern.replace(propertyToken, token.tokenFactory.getTokenValue().capitalize())
     }
 }

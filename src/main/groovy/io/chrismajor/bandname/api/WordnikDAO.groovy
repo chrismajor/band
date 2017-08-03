@@ -5,5 +5,8 @@ package io.chrismajor.bandname.api
  */
 interface WordnikDAO {
     String getRandomNoun()
-
+    String getRandomVerb()
+    String getRandomAdjective()
+    String getRandomAdverb()
+    String getRandomPronoun()
 }

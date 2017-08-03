@@ -1,16 +1,18 @@
 package io.chrismajor.bandname.tokens.factory
 
+import io.chrismajor.bandname.api.ApiWordnikDAOImpl
 import io.chrismajor.bandname.tokens.TokenFactory
 
 /**
  * Contains methods for returning a random adjective
  *
- * TODO: implement random adjective stuff...
+ * TODO: autowire api client
  */
 class AdjectiveToken implements TokenFactory {
 
     @Override
     String getTokenValue() {
-        return "smooth"
+        ApiWordnikDAOImpl api = new ApiWordnikDAOImpl()
+        return api.getRandomAdjective()
     }
 }

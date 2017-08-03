@@ -1,16 +1,18 @@
 package io.chrismajor.bandname.tokens.factory
 
+import io.chrismajor.bandname.api.ApiWordnikDAOImpl
 import io.chrismajor.bandname.tokens.TokenFactory
 
 /**
  * Contains methods for returning a random pronoun
  *
- * TODO: implement random pronoun stuff...
+ * TODO: autowire api client
  */
 class PronounToken implements TokenFactory{
 
     @Override
     String getTokenValue() {
-        return "she"
+        ApiWordnikDAOImpl api = new ApiWordnikDAOImpl()
+        return api.getRandomPronoun()
     }
 }

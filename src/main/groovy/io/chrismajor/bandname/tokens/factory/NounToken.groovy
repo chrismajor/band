@@ -6,7 +6,7 @@ import io.chrismajor.bandname.tokens.TokenFactory
 /**
  * Contains methods for returning a random noun
  *
- * TODO: implement random noun stuff...
+ * TODO: autowire api impl
  */
 class NounToken implements TokenFactory{
 

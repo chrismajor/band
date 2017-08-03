@@ -13,6 +13,8 @@ class ApiWordnikDAOImpl implements WordnikDAO {
     private String basePath = "http://api.wordnik.com/v4"
     private ApiInvoker apiInvoker = ApiInvoker.getInstance()
 
+    // TODO: tidy up repetition of 'getRandomWord' args
+
     /**
      * Get a random noun from wordnik
      * @return
@@ -24,7 +26,34 @@ class ApiWordnikDAOImpl implements WordnikDAO {
         return word.getWord()
     }
 
-    /**
+    @Override
+    String getRandomVerb() {
+        String partOfSpeech = "verb"
+        WordObject word = getRandomWord(partOfSpeech, "null", "false", 0, -1, 1, -1, 5, -1)
+        return word.getWord()
+    }
+
+    @Override
+    String getRandomAdjective() {
+        String partOfSpeech = "adjective"
+        WordObject word = getRandomWord(partOfSpeech, "null", "false", 0, -1, 1, -1, 5, -1)
+        return word.getWord()
+    }
+
+    @Override
+    String getRandomAdverb() {
+        String partOfSpeech = "adverb"
+        WordObject word = getRandomWord(partOfSpeech, "null", "false", 0, -1, 1, -1, 5, -1)
+        return word.getWord()
+    }
+
+    @Override
+    String getRandomPronoun() {
+        String partOfSpeech = "pronoun"
+        WordObject word = getRandomWord(partOfSpeech, "null", "false", 0, -1, 1, -1, 5, -1)
+        return word.getWord()
+    }
+/**
      * Call Wordnik's "random word" API
      *
      * Docs here: http://developer.wordnik.com/docs.html#!/words/getRandomWords_get_3
