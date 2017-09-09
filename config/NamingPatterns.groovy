@@ -3,12 +3,12 @@ Groovy script to act as configuration for band name patterns
 To be used in conjunction with groovy.util.ConfigSlurper
  */
 namingPatterns = [
-    "The [adjective] [noun]s",
-//    "[name] and the [noun]s",
+    "The [adjective] [nouns]",
+//    "[name] and the [nouns]",
 //    "[name]'s [noun]",
 //    "[verb]ing [name]",
     "[noun]",
-    "The [noun]s",
+    "The [nouns]",
 //    "[3-7] [noun]s",
     "[adjective] [adjective]",
     "[pronoun] [verb]s",

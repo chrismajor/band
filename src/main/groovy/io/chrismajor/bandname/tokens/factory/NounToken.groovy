@@ -8,7 +8,7 @@ import io.chrismajor.bandname.tokens.TokenFactory
  *
  * TODO: autowire api impl
  */
-class NounToken implements TokenFactory{
+class NounToken implements TokenFactory {
 
     @Override
     String getTokenValue() {

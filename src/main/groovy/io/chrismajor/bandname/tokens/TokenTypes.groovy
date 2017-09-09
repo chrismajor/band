@@ -7,7 +7,9 @@ import io.chrismajor.bandname.tokens.factory.*
  */
 enum TokenTypes {
     NOUN("noun", new NounToken()),
+    NOUNS("nouns", new NounsToken()),
     VERB("verb", new VerbToken()),
+    VERBS("verbs", new VerbsToken()),
     ADJECTIVE("adjective", new AdjectiveToken()),
     ADVERB("adverb", new AdverbToken()),
     NAME("name", new NameToken()),
