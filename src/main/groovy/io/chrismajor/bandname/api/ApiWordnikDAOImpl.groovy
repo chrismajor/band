@@ -13,8 +13,6 @@ class ApiWordnikDAOImpl implements WordnikDAO {
     private String basePath = "http://api.wordnik.com/v4"
     private ApiInvoker apiInvoker = ApiInvoker.getInstance()
 
-    // TODO: tidy up repetition of 'getRandomWord' args
-
     /**
      * Get a random noun from wordnik
      * @return
@@ -22,38 +20,40 @@ class ApiWordnikDAOImpl implements WordnikDAO {
     @Override
     String getRandomNoun() {
         String partOfSpeech = "noun"
-        WordObject word = getRandomWord(partOfSpeech, "null", "false", 0, -1, 1, -1, 5, -1)
-        return word.getWord()
+        return getRandomWord(partOfSpeech).getWord()
     }
 
     @Override
     String getRandomVerb() {
         String partOfSpeech = "verb"
-        WordObject word = getRandomWord(partOfSpeech, "null", "false", 0, -1, 1, -1, 5, -1)
-        return word.getWord()
+        return getRandomWord(partOfSpeech).getWord()
     }
 
     @Override
     String getRandomAdjective() {
         String partOfSpeech = "adjective"
-        WordObject word = getRandomWord(partOfSpeech, "null", "false", 0, -1, 1, -1, 5, -1)
-        return word.getWord()
+        return getRandomWord(partOfSpeech).getWord()
     }
 
     @Override
     String getRandomAdverb() {
         String partOfSpeech = "adverb"
-        WordObject word = getRandomWord(partOfSpeech, "null", "false", 0, -1, 1, -1, 5, -1)
-        return word.getWord()
+        return getRandomWord(partOfSpeech).getWord()
     }
 
     @Override
     String getRandomPronoun() {
         String partOfSpeech = "pronoun"
-        WordObject word = getRandomWord(partOfSpeech, "null", "false", 0, -1, 1, -1, 5, -1)
-        return word.getWord()
+        return getRandomWord(partOfSpeech).getWord()
     }
-/**
+
+    private WordObject getRandomWord(String partOfSpeech) {
+        // TODO: tune the settings for 'callWordnik' so that it pulls back less obscure words
+        // TODO: try / catch / throw Exceptions
+        return callWordnik(partOfSpeech, "null", "false", 0, -1, 1, -1, 5, -1)
+    }
+    
+    /**
      * Call Wordnik's "random word" API
      *
      * Docs here: http://developer.wordnik.com/docs.html#!/words/getRandomWords_get_3
@@ -70,11 +70,11 @@ class ApiWordnikDAOImpl implements WordnikDAO {
      * @return
      * @throws ApiException
      */
-    private WordObject getRandomWord (String includePartOfSpeech, String excludePartOfSpeech,
-                                      String hasDictionaryDef,
-                                      Integer minCorpusCount, Integer maxCorpusCount,
-                                      Integer minDictionaryCount, Integer maxDictionaryCount,
-                                      Integer minLength, Integer maxLength) throws ApiException {
+    private WordObject callWordnik(String includePartOfSpeech, String excludePartOfSpeech,
+                                   String hasDictionaryDef,
+                                   Integer minCorpusCount, Integer maxCorpusCount,
+                                   Integer minDictionaryCount, Integer maxDictionaryCount,
+                                   Integer minLength, Integer maxLength) throws ApiException {
 
         // TODO: pull this from properties file
         String path = "/words.json/randomWord"
@@ -99,7 +99,7 @@ class ApiWordnikDAOImpl implements WordnikDAO {
             String response = apiInvoker.invokeAPI(basePath, path, "GET", queryParams, null, new HashMap<String, String>())
             return response == null ? null : (WordObject) ApiInvoker.deserialize(response, "", WordObject.class)
         }
-        // TODO: tidy up this error handling
+        // TODO: tidy up this error handling - logging, throw exception instead of null value
         catch (ApiException ex) {
             if(ex.getCode() == 404) {
                 return null
